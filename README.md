@@ -1,11 +1,14 @@
 <div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/your-username/jason-svg-studio&env=VITE_GEMINI_API_KEY&envDescription=Get%20your%20Gemini%20API%20key%20from%20Google%20AI%20Studio&envLink=https://aistudio.google.com/app/apikey&project-name=jason-svg-studio&repo-name=jason-svg-studio)
 
 </div>
 
 # Jason SVG Studio
+
+## 仓库简介 | Repository Overview
+本仓库提供一个基于 React + Vite 的 SVG 字体创作与 AI 生成工作台，便于在浏览器中快速定制、预览并导出矢量作品。  
+This repository hosts a React + Vite powered workspace for crafting and AI‑generating SVG typography, enabling quick customization, preview, and export directly in the browser.
 
 This contains everything you need to run your app locally.
 
