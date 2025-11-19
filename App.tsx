@@ -33,11 +33,6 @@ export default function App() {
   }, []);
 
   const handleAiGenerate = async (stylePrompt: string) => {
-    if (!process.env.API_KEY) {
-      alert("API Key is missing. Please ensure process.env.API_KEY is set.");
-      return;
-    }
-    
     setIsGenerating(true);
     try {
       const code = await generateArtisticSvg(settings.text, stylePrompt);
