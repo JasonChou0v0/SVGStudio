@@ -170,10 +170,21 @@ export const ControlPanel: React.FC<ControlPanelProps> = ({
               <Wand2 size={16} />
               <h2>AI Generator</h2>
             </div>
-            
+
             <p className="text-sm text-slate-400">
               Use Gemini to generate artistic, code-based SVGs that go beyond standard fonts.
             </p>
+
+            {!import.meta.env.VITE_GEMINI_API_KEY && (
+              <div className="bg-amber-900/50 border border-amber-700 rounded-lg p-3">
+                <p className="text-amber-200 text-sm">
+                  <strong>API Key Missing:</strong> AI features are disabled. To enable AI generation, please set the <code className="bg-amber-800/50 px-1 rounded">VITE_GEMINI_API_KEY</code> environment variable.
+                </p>
+                <p className="text-amber-200 text-sm mt-2">
+                  Deploy this app to Vercel and add your Gemini API key in the project settings to enable AI features.
+                </p>
+              </div>
+            )}
 
             <div>
               <label className="block text-xs font-medium text-slate-400 mb-1">Style Prompt</label>
@@ -187,7 +198,7 @@ export const ControlPanel: React.FC<ControlPanelProps> = ({
 
             <button
               onClick={() => onGenerateAi(aiPrompt)}
-              disabled={isGenerating}
+              disabled={isGenerating || !import.meta.env.VITE_GEMINI_API_KEY}
               className="w-full py-3 bg-purple-600 hover:bg-purple-700 text-white rounded-lg font-medium transition-all flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {isGenerating ? (

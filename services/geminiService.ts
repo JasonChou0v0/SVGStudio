@@ -2,9 +2,18 @@ import { GoogleGenAI } from "@google/genai";
 
 const apiKey = import.meta.env.VITE_GEMINI_API_KEY || import.meta.env.GEMINI_API_KEY;
 const modelName = import.meta.env.VITE_GEMINI_MODEL || 'gemini-2.5-flash';
-const ai = new GoogleGenAI({ apiKey });
+
+let ai: GoogleGenAI | null = null;
+if (apiKey) {
+  ai = new GoogleGenAI({ apiKey });
+}
 
 export const generateArtisticSvg = async (text: string, styleDescription: string): Promise<string> => {
+  // Check if API key is available
+  if (!ai) {
+    throw new Error("Gemini API key not configured. AI features are disabled.");
+  }
+
   try {
     const prompt = `
       Create a single, self-contained valid SVG file for the text "${text}".

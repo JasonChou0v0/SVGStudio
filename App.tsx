@@ -37,9 +37,13 @@ export default function App() {
     try {
       const code = await generateArtisticSvg(settings.text, stylePrompt);
       setAiSvgCode(code);
-    } catch (error) {
+    } catch (error: any) {
       console.error("Failed to generate", error);
-      alert("Failed to generate SVG. See console for details.");
+      if (error.message && error.message.includes("API key not configured")) {
+        alert("AI features are disabled because the Gemini API key is not configured. Please set the VITE_GEMINI_API_KEY environment variable to enable AI generation.");
+      } else {
+        alert("Failed to generate SVG. See console for details.");
+      }
     } finally {
       setIsGenerating(false);
     }
