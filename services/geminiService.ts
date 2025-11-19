@@ -1,13 +1,15 @@
 import { GoogleGenAI } from "@google/genai";
 
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+const apiKey = import.meta.env.VITE_GEMINI_API_KEY || import.meta.env.GEMINI_API_KEY;
+const modelName = import.meta.env.VITE_GEMINI_MODEL || 'gemini-2.5-flash';
+const ai = new GoogleGenAI({ apiKey });
 
 export const generateArtisticSvg = async (text: string, styleDescription: string): Promise<string> => {
   try {
     const prompt = `
       Create a single, self-contained valid SVG file for the text "${text}".
       Style description: ${styleDescription}.
-      
+
       Requirements:
       1. The SVG must use a 'viewBox' attribute.
       2. It should be visually appealing and high quality.
@@ -16,7 +18,7 @@ export const generateArtisticSvg = async (text: string, styleDescription: string
     `;
 
     const response = await ai.models.generateContent({
-      model: 'gemini-2.5-flash',
+      model: modelName,
       contents: prompt,
     });
 

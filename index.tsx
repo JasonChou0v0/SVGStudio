@@ -8,8 +8,15 @@ if (!rootElement) {
 }
 
 const root = ReactDOM.createRoot(rootElement);
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+try {
+  console.log("Attempting to mount React app...");
+  root.render(
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>
+  );
+  console.log("React app mounted successfully");
+} catch (error) {
+  console.error("Failed to mount React app:", error);
+  rootElement.innerHTML = `<div style="color: red; padding: 20px;"><h1>Runtime Error</h1><pre>${error}</pre></div>`;
+}
