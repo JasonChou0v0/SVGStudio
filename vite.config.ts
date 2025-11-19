@@ -24,5 +24,8 @@ export default defineConfig(({ mode }) => {
       }
     },
     envPrefix: ['VITE_', 'GEMINI_'],
+    css: {
+      postcss: './postcss.config.js',
+    },
   };
 });
