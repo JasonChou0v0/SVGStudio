@@ -1,3 +1,8 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+/* 指定 Tailwind 扫描根目录外的源码，确保 Vercel 上也能生成所有原子类 */
+@source "../App.tsx";
+@source "../index.tsx";
+@source "../components";
+@source "../services";
+@source "../types.ts";
